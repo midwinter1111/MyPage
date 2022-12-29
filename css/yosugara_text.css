@@ -1,0 +1,19 @@
+@font-face {
+    font-family: 'yosugara';
+    src: url('../font/yosugara/yosugara1.1.ttf');
+}
+
+body {
+    font-family: yosugara;
+    color: #FFFFFF
+}
+
+pre {
+    font-family: yosugara;
+    color: #FFFFFF
+}
+
+a {
+    text-decoration: none;
+    color: #FFFFFF
+}

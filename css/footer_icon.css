@@ -1,0 +1,31 @@
+img {
+    max-width: 100%;
+}
+.sns-list {
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none 
+}
+.sns-list li {
+    width: 24%;
+    margin-right: 1%;
+    margin-bottom: 1%;
+}
+@media screen and (max-width: 768px) {
+    .photo-list li:nth-child(2n) {
+        margin-right: 0;
+    }
+}
+@media screen and (min-width: 769px) {
+    .photo-list li {
+        width: 32%;
+        margin-right: 2%;
+        margin-bottom: 2%;
+    }
+    .photo-list li:nth-child(3n) {
+        margin-right: 0;
+    }
+}
