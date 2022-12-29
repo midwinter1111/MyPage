@@ -1,0 +1,53 @@
+div.image_circle_journey {
+    text-decoration:none; 
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background-position: center;
+    object-fit: cover;
+    margin-bottom: 300px;
+    background-image: url("../image/jouney_icon.jpg")
+}
+
+div.image_circle_gaming {
+    text-decoration:none; 
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background-position: center;
+    object-fit: cover;
+    margin-left: auto;
+    margin-bottom: 300px;
+    background-image: url("../image/gaming_icon.png")
+}
+
+div.image_circle_working {
+    text-decoration:none; 
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background-position: center;
+    object-fit: cover;
+    margin-bottom: 300px;
+    background-image: url("../image/working_icon.jpg")
+}
+
+.scr-target {
+    opacity: 0;
+    transform: translate3d(0, 30px, 0);
+}
+.scr-target.is-active {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    transition: 1s;
+}
+
+.scr-delay-target {
+    opacity: 0;
+    transform: translate3d(0, 30px, 0);
+}
+.scr-delay-target.is-active {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    transition: 1s;
+}
