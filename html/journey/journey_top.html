@@ -2,19 +2,28 @@
 <html>
 
 <head>
-<title>旅ゲー人 - Journey</title>
-<link rel="stylesheet" href="../../css/dark_theme_background.css">
-<link rel="stylesheet" href="../../css/yosugara_text.css">
-<link rel="icon" href="../../image/backpack_orange.png">
+    <title>旅ゲー人 - Journey</title>
+    <link rel="stylesheet" href="../../css/dark_theme_background.css">
+    <link rel="stylesheet" href="../../css/yosugara_text.css">
+    <link rel="stylesheet" href="../../css/button-page-top.css">
+    <link rel="stylesheet" href="../../css/button-page-back.css">
+    <link rel="icon" href="../../image/backpack_orange.png">
+    <style>
+        img {
+            max-width: 100%;
+        }
+    </style>
 </head>
 
 <body>
+
+旅の思い出（エリアをクリック）
 
 <img src="../../image/map-japan.png" usemap="#image-map">
 <map name="image-map">
     <area target="_blank" alt="01_hokkaido" title="01_hokkaido" href="./memory01_hokkaido.html" coords="1041,46,1017,71,1029,106,1032,139,1025,156,1028,195,1003,211,1013,262,995,274,978,266,947,257,936,269,946,291,928,312,900,339,901,370,923,393,917,429,928,447,947,435,964,412,989,416,1001,405,972,383,948,371,943,346,963,335,987,358,1026,332,1090,351,1135,375,1154,385,1159,346,1215,283,1244,283,1306,253,1321,230,1286,234,1272,207,1283,152,1272,147,1251,182,1207,174,1189,170,1166,164,1112,129,1079,90" shape="poly">
     <area target="_blank" alt="02_aomori" title="02_aomori" href="./memory02_aomori.html" coords="985,432,1009,447,1025,441,1025,488,1028,518,1046,540,995,561,987,542,967,548,917,541,912,526,939,509,944,484,943,464,963,467,978,499,1003,494,1003,468,975,472" shape="poly">
-    <area target="_blank" alt="03_akiita" title="03_akiita" href="./memory03_akiita.html" coords="921,546,990,552,990,566,987,598,976,634,986,681,968,692,917,672,931,620,917,601,901,591,924,570" shape="poly">
+    <area target="_blank" alt="03_akita" title="03_akita" href="./memory03_akita.html" coords="921,546,990,552,990,566,987,598,976,634,986,681,968,692,917,672,931,620,917,601,901,591,924,570" shape="poly">
     <area target="_blank" alt="04_iwate" title="04_iwate" href="./memory04_iwate.html" coords="995,562,1046,542,1059,564,1072,593,1075,622,1067,663,1053,679,1036,679,1030,696,1010,693,987,686,979,647,979,620" shape="poly">
     <area target="_blank" alt="05_yamagata" title="05_yamagata" href="./memory05_yamagata.html" coords="915,677,947,685,975,702,970,721,971,740,960,764,952,778,944,801,917,795,902,795,902,771,921,757,904,736,890,727" shape="poly">
     <area target="_blank" alt="06_miyagi" title="06_miyagi" href="./memory06_miyagi.html" coords="975,696,995,690,1018,697,1052,686,1042,709,1040,731,1009,741,1001,766,1001,787,982,794,964,786,954,780,972,737" shape="poly">
@@ -61,6 +70,19 @@
     <area target="_blank" alt="47_okinawa" title="47_okinawa" href="./memory47_okinawa.html" coords="1091,1336,1124,1344,1143,1320,1154,1328,1143,1348,1131,1359,1118,1370,1108,1391,1095,1411,1079,1417,1079,1401,1087,1390,1084,1376,1106,1363,1103,1348" shape="poly">
 </map>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="../../js/jQuery-rwdImageMaps-master/jquery.rwdImageMaps.min.js"></script>
+<script>
+    $(function() {
+        $('img[usemap]').rwdImageMaps();
+    })
+</script>
+
 </body>
+
+<footer>
+    <a href="#" id="page-top"></a>
+    <a href="../../index.html" id="page-back"></a>
+</footer>
 
 </html>
