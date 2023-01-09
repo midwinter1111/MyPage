@@ -3,10 +3,98 @@
 
 <head>
 <title>旅ゲー人 - Journey - memory of osaka</title>
+<link rel="stylesheet" href="../../css/dark_theme_background.css">
+<link rel="stylesheet" href="../../css/yosugara_text.css">
+<link rel="stylesheet" href="../../css/circle_image.css">
+<link rel="stylesheet" href="../../css/google_photo_div.css">
+<script type="text/javascript" src="../../js/googlephotosapi.js"></script>
 </head>
 
 <body>
-大阪府はまだ行ったことがありません。
+大阪府の思い出<br><br><br>
+<div id="dynamic-photo"></div>
+more photos are available on <u><a href="https://photos.app.goo.gl/y9xX4SKa8txvJh5j6">Google Photo</a></u>
 </body>
 
 </html>
+
+<script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+        getAccessTokenWithRefreshToken();
+    });
+
+    function getAccessTokenWithRefreshToken () {
+        // POST method
+        const requestURL = "https://www.googleapis.com/oauth2/v4/token";
+        const requestBody = "client_id=" + CLIENT_ID + "&client_secret=" + CLIENT_SECRET + "&grant_type=" + GRANT_TYPE + "&refresh_token=" + REFRESH_TOKEN;
+
+        var xmlHttpRequest = new XMLHttpRequest();
+        xmlHttpRequest.open('POST', requestURL);
+        xmlHttpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xmlHttpRequest.send(requestBody);
+
+        xmlHttpRequest.onreadystatechange = function() {
+            if(this.readyState == XMLHttpRequest.DONE && this.status == 200) {
+                const jsonObj = JSON.parse(xmlHttpRequest.responseText);
+                getGooglePhotosOsaka(jsonObj.access_token);
+            }
+        }
+    }
+
+    function getGooglePhotosOsaka (access_token) {
+        // POST method
+        const requestURL = "https://photoslibrary.googleapis.com/v1/mediaItems:search";
+        const requestBody = "albumId=" + "ADEOmGp8kf5ITqPTqLVe3Osy5yKpAiFQxUlVAOpPoJyIa9J2tF9BevXznz70PfDYzajvhdtmMqFo" + "&pageSize=" + "100";
+
+        var xmlHttpRequest = new XMLHttpRequest();
+        xmlHttpRequest.open('POST', requestURL);
+        xmlHttpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xmlHttpRequest.setRequestHeader('Authorization', 'Bearer ' + access_token);
+        xmlHttpRequest.send(requestBody);
+
+        xmlHttpRequest.onreadystatechange = function() {
+            if(this.readyState == XMLHttpRequest.DONE && this.status == 200) {
+                makeDynamicPhotoList(JSON.parse(xmlHttpRequest.responseText).mediaItems);
+            }
+        }
+    }
+
+    function makeDynamicPhotoList (photoList) {
+        const div = document.getElementById("dynamic-photo");
+        var htmlString = "<div class=\"scr-target\">";
+        
+        for(let item of photoList) {
+            htmlString += "<div class=\"photo-text-set\"><img src=\"" + item.baseUrl + "\" /><p>" + item.filename.split('.')[0] + "</p></div>"
+        }
+        htmlString += "</div>";
+
+        div.innerHTML = htmlString;
+        setupScrollTarget();
+    }
+
+    function setupScrollTarget () {
+        const target = document.querySelectorAll('.scr-target')
+    const targetArray = Array.prototype.slice.call(target);
+    const options = {
+        root: null,
+        rootMargin: '0px 0px',
+        threshold: 0.2
+    };
+    
+    const observer = new IntersectionObserver(callback, options)
+    targetArray.forEach(function (tgt) {
+        observer.observe(tgt)
+    });
+    
+    function callback(entries) {
+        entries.forEach(function(entry) {
+            const target = entry.target;
+            if (entry.isIntersecting && !target.classList.contains('is-active')) {
+                console.log("active!");
+                target.classList.add('is-active');
+            }
+        });
+    };
+    }
+
+</script>

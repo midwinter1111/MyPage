@@ -16,6 +16,7 @@ window.addEventListener("load", function() {
         entries.forEach(function(entry) {
             const target = entry.target;
             if (entry.isIntersecting && !target.classList.contains('is-active')) {
+                console.log("active!");
                 target.classList.add('is-active');
             }
         });

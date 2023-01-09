@@ -1,0 +1,12 @@
+div {
+    text-align: center;
+    
+}
+
+.scr-target {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 2% 2%
+}
